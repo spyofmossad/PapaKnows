@@ -29,6 +29,8 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     private func setData(for row: Int) {
         if let imageUrl = codes[row].imageUrl {
             ApiManager.getImage(by: imageUrl, ({ image in self.promoImage.image = image }))
+        } else {
+            self.promoImage.image = UIImage(named: "default")
         }
         
         let text = codes[row].description.split(separator: "-")
